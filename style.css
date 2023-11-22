@@ -65,9 +65,11 @@ img {
   background: #123 url(peako.jpg) no-repeat;
   background-size: calc(var(--rolling-width) * 3) calc(var(--rolling-width) * 3);
   transition: top 0.3s ease, left 0.3s ease;
+  pointer-events: none;
 }
 .rolling-box .rolling-item[data-can-flip="true"] {
   cursor: pointer;
+  pointer-events: auto;
 }
 .rolling-box .rolling-item[data-key="0"] {
   background-position: 0 0;
@@ -131,9 +133,6 @@ img {
 .rolling-box .rolling-item[data-index="8"] {
   left: calc(var(--rolling-out-width) * 2);
   top: calc(var(--rolling-out-width) * 2);
-}
-.rolling-box[data-checked="true"] .rolling-item {
-  pointer-events: none;
 }
 .rolling-box[data-checked="true"] .rolling-item[data-key="4"] {
   cursor: pointer;

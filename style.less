@@ -70,9 +70,12 @@ img{
         transition: 
             top 0.3s ease,
             left 0.3s ease;
+
+        pointer-events: none;
         
         &[data-can-flip="true"]{
             cursor: pointer; 
+            pointer-events: auto;
         }
         // &:before{
         //     content:attr(data-key);
@@ -145,7 +148,6 @@ img{
     }
     &[data-checked="true"]{
         .rolling-item{
-            pointer-events: none;
             &[data-key="4"]{
                 cursor: pointer;
                 pointer-events: auto;
