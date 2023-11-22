@@ -4,10 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>京阿尼Only</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="app">
-        
+        <div class="rolling-box" :data-checked="check()">
+            <div class="rolling-item" 
+                v-for="index in [0,1,2,3,4,5,6,7,8]" 
+                :key="index" 
+                :data-key="index"
+                :data-index="rollings.indexOf(index)"
+                :data-can-flip="canFlip(rollings.indexOf(index))"
+                @click.prevent="flip(rollings.indexOf(index))"></div>
+        </div>
+        <!-- <pre>{{rollings}}</pre> -->
     </div>
     <script src="vue.2.6.11.min.js"></script>
     <script src="document.js"></script>
