@@ -47,13 +47,15 @@ img{
     
     --rolling-width: 300px;
 
-    --short-side: min(100vw, 100vh);
+    --short-side:  min(100vw, 100vh);
     // --rolling-margin: 20px;
     // --rolling-width: calc( ( var(--short-side) - var(--rolling-margin) ) / 3  - var(--rolling-margin) );
 
+    --rolling-all-width: ~"min(1000px, var(--short-side))";
+    // --rolling-all-width: var(--short-side);
     
-    --rolling-margin: calc( var(--short-side) * 0.024);
-    --rolling-width: calc( var(--short-side) * 0.3);
+    --rolling-margin: calc( var(--rolling-all-width) * 0.025);
+    --rolling-width:  calc( var(--rolling-all-width) * 0.3);
 
     --rolling-out-width: calc( var(--rolling-width) + var(--rolling-margin) );
 
