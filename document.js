@@ -21,23 +21,23 @@ const v = new Vue({
     },
     methods:{
         flip(nowIndex){
-            const whereIsFive = this.rollings.indexOf(4);
+            const whereIsFive = v.rollings.indexOf(4);
 
-            if(this.check()) if(nowIndex === 4) return this.random();
+            if(v.check()) if(nowIndex === 4) return v.random();
 
-            const nowValue = this.rollings[nowIndex];
+            const nowValue = v.rollings[nowIndex];
 
-            this.$set(this.rollings,whereIsFive,nowValue);
-            this.$set(this.rollings,nowIndex,4);
+            v.$set(v.rollings,whereIsFive,nowValue);
+            v.$set(v.rollings,nowIndex,4);
 
-            if(this.check()) return alert('win!');
+            if(v.check()) return alert('win!');
         },
         canFlip(nowIndex){
             const whereIsFive = this.rollings.indexOf(4);
             return this.rollingsCanFlip[nowIndex].includes(whereIsFive);
         },
         random(){
-            this.rollings = this.rollings.sort(()=>Math.random()-0.5);
+            v.rollings = v.rollings.sort(()=>Math.random()-0.5);
         },
         check(){
             return this.rollings.every((item,index)=>item === index);
