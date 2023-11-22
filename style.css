@@ -48,6 +48,7 @@ img {
   right: 0;
   bottom: 0;
   left: 0;
+  z-index: 0;
   margin: auto;
   --rolling-width: 300px;
   --short-side: min(100vw, 100vh);
@@ -67,6 +68,7 @@ img {
   background-size: calc(var(--rolling-width) * 3) calc(var(--rolling-width) * 3);
   transition: top 0.3s ease, left 0.3s ease;
   pointer-events: none;
+  z-index: 1;
 }
 .rolling-box .rolling-item[data-can-flip="true"] {
   cursor: pointer;
@@ -85,6 +87,7 @@ img {
   background-position: 0 calc(var(--rolling-width) * -1);
 }
 .rolling-box .rolling-item[data-key="4"] {
+  z-index: 0;
   background-position: calc(var(--rolling-width) * -1) calc(var(--rolling-width) * -1);
 }
 .rolling-box .rolling-item[data-key="5"] {

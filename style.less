@@ -43,6 +43,7 @@ img{
     right:0;
     bottom:0;
     left:0;
+    z-index:0;
     margin: auto;
     
     --rolling-width: 300px;
@@ -74,6 +75,8 @@ img{
             left 0.3s ease;
 
         pointer-events: none;
+
+        z-index:1;
         
         &[data-can-flip="true"]{
             cursor: pointer; 
@@ -95,6 +98,7 @@ img{
             background-position: 0 calc(var(--rolling-width) * -1);
         }
         &[data-key="4"]{
+            z-index:0;
             background-position: calc(var(--rolling-width) * -1) calc(var(--rolling-width) * -1);
         }
         &[data-key="5"]{
