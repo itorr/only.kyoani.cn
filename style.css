@@ -132,6 +132,6 @@ img {
   left: calc(var(--rolling-out-width) * 2);
   top: calc(var(--rolling-out-width) * 2);
 }
-.rolling-box[data-check="true"] .rolling-item[data-key="4"] {
+.rolling-box[data-checked="true"] .rolling-item[data-key="4"] {
   cursor: pointer;
 }
