@@ -10,15 +10,12 @@ const v = new Vue({
     },
     methods:{
         flip(nowIndex){
-            console.log('按下了',nowIndex)
-            console.log(this.check());
             const whereIsFive = this.rollings.indexOf(4);
 
-            console.log('whereIsFive',whereIsFive);
-
             if(this.check()){
-                if(nowIndex === 4) this.random();
-                return;
+                if(nowIndex === 4){ 
+                    return this.random();
+                }
             }
 
             const nowValue = this.rollings[nowIndex];
@@ -31,7 +28,6 @@ const v = new Vue({
                     nowIndex + 3
                 ].includes(whereIsFive)
             ){
-                console.log(nowValue)
                 this.$set(this.rollings,whereIsFive,nowValue);
                 this.$set(this.rollings,nowIndex,4);
             }
