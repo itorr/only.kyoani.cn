@@ -1,6 +1,6 @@
 
 const v = new Vue({
-    el: '#app',
+    el,
     data: {
         rollings:[
             0,1,2,
