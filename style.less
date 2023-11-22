@@ -145,8 +145,10 @@ img{
     }
     &[data-checked="true"]{
         .rolling-item{
+            pointer-events: none;
             &[data-key="4"]{
                 cursor: pointer;
+                pointer-events: auto;
             }
         }
     }
