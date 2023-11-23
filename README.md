@@ -5,8 +5,9 @@
 ## 首页
 https://only.kyoani.cn
 
-封面绘 Peako
-页面制作 toto
+ - 封面绘 Peako
+ - 页面制作 toto
+ - 企划 京阿尼 Only 组
 
 
 
