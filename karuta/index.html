@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-Hans-CN">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>京阿尼歌牌</title>
+	<link rel="stylesheet" href="karuta.css">
+</head>
+<body>
+	<div class="app" :data-status="status">
+		<div class="progress-box" :data-hide="status !== 'playing'">
+			<div class="progress-bar" :style="`width:${(remainTime - 1)/(duration - 1) * 100}%`">{{remainTime}}</div>
+		</div>
+		<div class="head">
+			<div class="num-item remain-card-num">
+				<div class="num">{{remainNumber}}</div>
+				<div class="text">剩余卡牌</div>
+			</div>
+			<div class="num-item remain-time">
+				<div class="num">{{remainTime}}</div>
+				<div class="text">剩余秒数</div>
+			</div>	
+		</div>
+		<div class="karutas-box">
+			<div class="karuta-item"
+				v-for="karuta,index in karutas" 
+				:key="index" 
+				:data-index="index"
+				:data-value="karuta"
+				:data-selected="currentSelectedIndexes.includes(index)"
+				:data-completed="completedKarutaIndexes.includes(index)"
+				@click="selectKaruta(index)">
+				<svg class="front" viewbox="0 0 4 5" 
+					:data-value="0">
+				</svg>
+				<svg class="back" viewbox="0 0 4 5" 
+					:data-value="karuta">
+				</svg>
+			</div>
+		</div>
+		<div class="foot">
+			<!-- <a class="btn" @click="startGame()" v-if="status === 'ready'">开始游戏</a> -->
+			<a class="btn" @click="reset()" v-if="status === 'end'">再来一次</a>
+		</div>
+		<div class="settle-box" v-if="isWin!==null">
+			<div class="settle-content" v-if="isWin">
+				<div class="body">
+					<h2>恭喜达成！</h2>
+					<div class="use-second-box">
+						用时
+						<span class="second-text">
+							<span class="second-num">{{usedTime}}</span>
+							秒
+						</span>
+					</div>
+					<img src="settle@2x.webp" alt="达成！">
+				</div>
+				<div class="foot">
+					<a class="btn" @click="reset()">再来一次！</a>
+				</div>
+			</div>
+			<div class="settle-content" v-else>
+				<div class="body">
+					<h2>未达成！</h2>
+				</div>
+				<div class="foot">
+					<a class="btn" @click="reset()">再来一次！</a>
+				</div>
+			</div>
+		</div>
+		<div class="win-count">{{winCount}}</div>
+	</div>
+	<script src="vue.2.6.11.min.js"></script>
+	<script src="karuta.js"></script>
+</body>
+</html>

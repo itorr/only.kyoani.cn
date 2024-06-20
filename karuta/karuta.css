@@ -1,0 +1,179 @@
+html {
+  font: 14px/1.5 sans-serif;
+  color: #333;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  margin: 0;
+}
+.app {
+  max-width: 500px;
+  margin: 0 auto;
+}
+.karuta-item {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.progress-box {
+  margin: 8px 8px 0;
+  --progress-bar-height: 16px;
+  transition: opacity 0.5s ease;
+}
+.progress-box .progress-bar {
+  height: var(--progress-bar-height);
+  border-radius: 10px;
+  background: #00B9D6;
+  text-align: right;
+  box-sizing: border-box;
+  padding: 0 10px;
+  font-size: 13px;
+  line-height: var(--progress-bar-height);
+  color: #FFF;
+  min-width: 20px;
+  width: 100%;
+}
+.progress-box .progress-bar:after {
+  content: 's';
+  margin-left: 1px;
+}
+.progress-box[data-hide="true"] {
+  opacity: 0;
+}
+.head {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 8px;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+.head .num-item .num {
+  font-weight: bold;
+  font-size: 32px;
+  line-height: 40px;
+}
+.head .num-item .text {
+  font-size: 14px;
+  line-height: 20px;
+  color: #999;
+}
+.head .remain-time {
+  text-align: right;
+}
+.karutas-box {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  --karuta-margin: 2px;
+  padding: var(--karuta-margin);
+  perspective: 1200px;
+  transition: opacity 0.3s ease;
+}
+.karutas-box .karuta-item {
+  display: block;
+  margin: var(--karuta-margin);
+  cursor: pointer;
+  position: relative;
+}
+.karutas-box .karuta-item svg {
+  pointer-events: none;
+  display: block;
+  background-color: #00B9D6;
+  background-size: cover;
+  box-shadow: 0 0 0 1px #F8F8F8;
+  border-radius: 4px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: rotateY(0);
+  transition: transform 0.3s ease;
+}
+.karutas-box .karuta-item .front {
+  position: absolute;
+  width: 100%;
+}
+.karutas-box .karuta-item .back {
+  width: 100%;
+  transform: rotateY(180deg);
+}
+.karutas-box .karuta-item[data-completed] {
+  pointer-events: none;
+}
+.karutas-box .karuta-item[data-completed] .front {
+  transform: rotateY(180deg);
+}
+.karutas-box .karuta-item[data-completed] .back {
+  transform: rotateY(0);
+}
+.karutas-box .karuta-item[data-selected] .front {
+  transform: rotateY(180deg);
+}
+.karutas-box .karuta-item[data-selected] .back {
+  transform: rotateY(0);
+}
+.app[data-status="end"] .karutas-box {
+  pointer-events: none;
+  opacity: 0.3;
+}
+.app[data-status="playing"] .progress-box .progress-bar {
+  transition: width 1s linear;
+}
+.app[data-status="playing"] .head {
+  opacity: 1;
+}
+.foot {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+}
+.btn {
+  font-size: 16px;
+  width: 140px;
+  line-height: 48px;
+  border-radius: 4px;
+  background: #00B9D6;
+  color: #FFF;
+  display: inline-block;
+  text-align: center;
+  margin: 10px;
+  cursor: pointer;
+}
+.settle-box {
+  background: #FFF;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+}
+.settle-box .settle-content h2 {
+  margin: 0;
+  font-size: 38px;
+  text-indent: 1em;
+  line-height: 80px;
+}
+.settle-box .settle-content .use-second-box {
+  font-size: 18px;
+  line-height: 30px;
+}
+.settle-box .settle-content .use-second-box .second-text .second-num {
+  font-size: 1.6em;
+  font-weight: bold;
+}
+.settle-box .settle-content img {
+  display: block;
+  margin: 14px auto;
+  max-width: 100%;
+}
+.win-count {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  font-size: 10px;
+  line-height: 1;
+  padding: 1px 2px;
+  opacity: 0.3;
+}
