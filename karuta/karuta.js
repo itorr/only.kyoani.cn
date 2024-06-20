@@ -66,6 +66,10 @@ const app = new Vue({
 				return; // 如果已经翻牌了那么不处理
 			}
 
+			if(this.currentSelectedIndexes.includes(index)){
+				return; // 如果已经选中了那么不处理
+			}
+
 			if(this.currentSelectedIndexes.length >= 2){
 				return; // 如果已经有两张牌了那么不处理
 			}
@@ -90,6 +94,7 @@ const app = new Vue({
 			const karuta2 = karutas[index2];
 
 			if(karuta1 === karuta2){
+				// 翻牌成功 记录，并清空
 				this.completedKarutaIndexes.push(index1);
 				this.completedKarutaIndexes.push(index2);
 				this.currentSelectedIndexes = [];
