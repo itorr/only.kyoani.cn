@@ -103,6 +103,9 @@ body {
 .karutas-box .karuta-item[data-completed] .back {
   transform: rotateY(0);
 }
+.karutas-box .karuta-item[data-selected] {
+  pointer-events: none;
+}
 .karutas-box .karuta-item[data-selected] .front {
   transform: rotateY(180deg);
 }
