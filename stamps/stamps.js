@@ -1,0 +1,140 @@
+const ids = [
+	'yuii',
+	'tata',
+	'haruru',
+	'tamama',
+	'kanana',
+	'kami',
+	'kuku',
+];
+
+const regex = new RegExp(ids.join('|'));
+
+console.log(regex);
+
+const localKey = 'S2h';
+
+
+let hisIds = [];
+const loadHisIds = ()=>{
+	const str = localStorage.getItem(localKey) || '[]';
+	hisIds = JSON.parse(str);
+}
+
+const setIds = ()=>{
+	localStorage.setItem(localKey,JSON.stringify(hisIds));
+}
+
+const idMatch = location.search.match(regex);
+const id = idMatch ? idMatch[0] : null;
+
+console.log(id);
+
+const width = 600;
+const height = 798;
+
+const charaWidth = 200;
+const charaHeight = 266;
+
+
+const canvas = document.createElement('canvas');
+canvas.width = width;
+canvas.height = 798;
+const ctx = canvas.getContext('2d');
+document.body.appendChild(canvas);
+
+const tobImage = new Image();
+tobImage.src = 'tob.png';
+
+
+const texts = [
+	'在会场寻找飞出踪影',
+	'继续找找！',
+	'会不会藏在角落',
+	'进展很顺利嘛',
+	'会不会藏在内场',
+	'就快达成了！',
+	'最后一只藏在哪里呢',
+	'达成！去巡礼区盖章',
+]
+
+const init = ()=>{
+	loadHisIds();
+
+	let text = texts[hisIds.length];
+
+
+	if(id){
+		if(!hisIds.includes(id)){
+			hisIds.push(id);
+			text = texts[hisIds.length];
+			setIds();
+		}else{
+			if(hisIds.length < 5){
+				text = '已经集过这里啦';
+			}
+		}
+	}
+
+	console.log(hisIds);
+
+	ctx.drawImage(
+		tobImage,
+		width,0,
+		width,height,
+		0,0,
+		width,height,
+	);
+
+	for(const index in ids){
+		const _id = ids[index];
+		if(hisIds.includes(_id)){
+
+			console.log(_id);
+
+			const x = index % 3;
+			const y = Math.floor(index / 3);
+
+			const left = x * charaWidth;
+			const top = y * charaHeight;
+
+			console.log(left,top)
+			ctx.drawImage(
+				tobImage,
+				
+				left,top,
+				charaWidth,charaHeight,
+
+				left,top,
+				charaWidth,charaHeight,
+			)
+		}
+	}
+
+
+	ctx.font = 'bold 100px sans-serif';
+	ctx.textAlign = 'center';
+	ctx.fillText(
+		`${hisIds.length} / 7`,
+		380,
+		670
+	);
+
+
+	ctx.font = '40px sans-serif';
+	ctx.fillStyle = '#666';
+	ctx.fillText(
+		text,
+		380,
+		740,
+		360,
+	)
+};
+
+
+
+
+
+tobImage.onload = init;
+
+
