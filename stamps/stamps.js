@@ -44,7 +44,7 @@ const ctx = canvas.getContext('2d');
 document.body.appendChild(canvas);
 
 const tobImage = new Image();
-tobImage.src = 'tob.png';
+tobImage.src = '/stamps/tob.png';
 
 
 const texts = [
